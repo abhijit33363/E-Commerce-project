@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience shopping in 3D - Explore our collection of premium products with immersive 3D visualization. Shop electronics, fashion, accessories and more.">
+    <meta name="keywords" content="3D ecommerce, online shopping, 3D products, virtual store, electronics, fashion, accessories, immersive shopping">
+    <meta name="author" content="3DShop">
+    <meta name="robots" content="index, follow">
+    <title>RBShop - Immersive 3D Shopping Experience</title>
+    <link rel="canonical" href="https://www.3dshop.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    <style>
+        /* Modern CSS with 3D effects */
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a463f5;
+            --accent-color: #00cec9;
+            --dark-color: #2d3436;
+            --light-color: #f9f9f9;
+            --gray-color: #636e72;
+            --success-color: #00b894;
+            --warning-color: #fdcb6e;
+            --danger-color: #d63031;
+            --border-radius: 16px;
+            --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --box-shadow-3d: 0 30px 60px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 3D Background Effect */
+        .background-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .floating-shape {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(108,92,231,0.3) 0%, rgba(162,155,254,0.1) 100%);
+            animation-delay: -2s;
+        }
+
+        .shape-2 {
+            bottom: 10%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,206,201,0.3) 0%, rgba(0,206,201,0.1) 100%);
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(163,99,245,0.3) 0%, rgba(163,99,245,0.1) 100%);
+            animation-delay: -8s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateZ(-100px) rotate(0deg); }
+            25% { transform: translateZ(100px) rotate(5deg); }
+            50% { transform: translateZ(-50px) rotate(-5deg); }
+            75% { transform: translateZ(150px) rotate(3deg); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 3D Header */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transform: translateZ(20px);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateZ(40px) scale(1.05);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* 3D Search Bar */
+        .search-bar {
+            flex: 0 1 400px;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px 5px 5px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateZ(10px);
+            transition: var(--transition);
+        }
+
+        .search-bar:hover {
+            transform: translateZ(30px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 0;
+            font-size: 15px;
+            outline: none;
+            color: white;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-bar button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        /* 3D Navigation Icons */
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 22px;
+            color: white;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transform: translateZ(10px);
+        }
+
+        .nav-icon:hover {
+            transform: translateZ(40px) scale(1.1);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 10px 30px rgba(108,92,231,0.4);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, var(--accent-color), var(--success-color));
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        /* 3D Hero Section */
+        .hero {
+            padding: 80px 0;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text {
+            transform: translateZ(50px);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px) translateZ(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateZ(50px);
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 3D Buttons */
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 10px 30px rgba(108,92,231,0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) translateZ(30px);
+            box-shadow: 0 20px 40px rgba(108,92,231,0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-5px) translateZ(30px);
+        }
+
+        .hero-3d-model {
+            transform: translateZ(100px) rotateY(-15deg);
+            animation: float3D 6s infinite ease-in-out;
+        }
+
+        @keyframes float3D {
+            0%, 100% { transform: translateZ(100px) rotateY(-15deg) translateY(0); }
+            50% { transform: translateZ(150px) rotateY(-10deg) translateY(-20px); }
+        }
+
+        .hero-3d-model img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 30px;
+            box-shadow: 30px 30px 60px rgba(0,0,0,0.3);
+            transform: rotateX(10deg);
+        }
+
+        /* 3D Product Cards */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            transform-style: preserve-3d;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: translateZ(40px);
+        }
+
+        .section-title p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            transform: translateZ(20px);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            transform: translateZ(20px) rotateX(0deg);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateZ(60px) rotateX(2deg) scale(1.05);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--accent-color), var(--success-color));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1;
+            transform: translateZ(40px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .product-badge.sale {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .product-badge.new {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .product-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1) translateZ(30px);
+        }
+
+        .product-3d-overlay {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            z-index: 2;
+            transform: translateZ(50px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: var(--transition);
+        }
+
+        .product-3d-overlay:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: translateZ(70px) scale(1.1);
+        }
+
+        .product-info {
+            padding: 25px;
+            color: white;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .old-price {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.5);
+            text-decoration: line-through;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transform: translateZ(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart:hover {
+            transform: translateZ(40px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(108,92,231,0.4);
+        }
+
+        /* 3D Categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            transform: translateZ(20px) rotateY(0deg);
+            cursor: pointer;
+            color: white;
+        }
+
+        .category-card:hover {
+            transform: translateZ(60px) rotateY(5deg) scale(1.1);
+            border-color: var(--accent-color);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .category-icon {
+            font-size: 50px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            transform: translateZ(30px);
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            transform: translateZ(50px) scale(1.1);
+            color: white;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .category-card p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* 3D Ad Containers */
+        .ad-container {
+            margin: 60px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            transform: translateZ(30px);
+            transition: var(--transition);
+        }
+
+        .ad-container:hover {
+            transform: translateZ(50px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .ad-container p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        /* 3D Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            perspective: 1000px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            transform: translateZ(20px);
+            transition: var(--transition);
+            color: white;
+        }
+
+        .feature-card:hover {
+            transform: translateZ(60px) scale(1.05);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: white;
+            transform: translateZ(30px);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: translateZ(50px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(108,92,231,0.4);
+        }
+
+        /* 3D Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, rgba(108,92,231,0.3), rgba(0,206,201,0.3));
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 80px 0;
+            margin: 60px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            transform-style: preserve-3d;
+            transform: translateZ(40px);
+        }
+
+        .newsletter-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 30px auto 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .newsletter-form button {
+            padding: 15px 35px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(108,92,231,0.4);
+        }
+
+        /* 3D Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: rgba(45, 52, 54, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .cart-header h3 {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            transform: rotate(90deg);
+            color: var(--accent-color);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            transform: translateZ(10px);
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .remove-item {
+            color: var(--danger-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .remove-item:hover {
+            transform: scale(1.2);
+            color: #ff7675;
+        }
+
+        .cart-footer {
+            padding: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(108,92,231,0.4);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* 3D Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2001;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* 3D Footer */
+        footer {
+            background: rgba(45, 52, 54, 0.8);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 80px 0 30px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            transform-style: preserve-3d;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                order: 2;
+            }
+
+            .hero-3d-model {
+                order: 1;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cube-wrapper {
+            perspective: 1000px;
+        }
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 4s infinite linear;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+
+        .front { transform: translateZ(50px); }
+        .back { transform: rotateY(180deg) translateZ(50px); }
+        .right { transform: rotateY(90deg) translateZ(50px); }
+        .left { transform: rotateY(-90deg) translateZ(50px); }
+        .top { transform: rotateX(90deg) translateZ(50px); }
+        .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+        @keyframes rotateCube {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- 3D Background -->
+    <div class="background-3d">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="cube-wrapper">
+            <div class="cube">
+                <div class="cube-face front"><i class="fas fa-cube"></i></div>
+                <div class="cube-face back"><i class="fas fa-cube"></i></div>
+                <div class="cube-face right"><i class="fas fa-cube"></i></div>
+                <div class="cube-face left"><i class="fas fa-cube"></i></div>
+                <div class="cube-face top"><i class="fas fa-cube"></i></div>
+                <div class="cube-face bottom"><i class="fas fa-cube"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-wrapper">
+                <a href="#" class="logo">
+                    <i class="fas fa-cube"></i>
+                    RB<span>Shop</span>
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search 3D products...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="nav-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="far fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Experience Shopping in RB</h1>
+                    <p>Immerse yourself in a new dimension of online shopping. View products in stunning 3D, rotate, zoom, and explore every detail before you buy.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Explore in Shop</a>
+                        <a href="#" class="btn btn-outline">View Collection</a>
+                    </div>
+                </div>
+                <div class="hero-3d-model">
+                    <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="3D Shopping">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Ad Banner -->
+    <div class="container">
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <p>Advertisement • Experience 3D Shopping</p>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop in Fansy 3D  Categories</h2>
+                <p>Explore our curated collection of 3D-ready products across multiple categories</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Electronics</h3>
+                    <p>150+ 3D Models</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Fashion</h3>
+                    <p>200+ 3D Models</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Home Decor</h3>
+                    <p>180+ 3D Models</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h3>Footwear</h3>
+                    <p>120+ 3D Models</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Accessories</h3>
+                    <p>90+ 3D Models</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Watches</h3>
+                    <p>80+ 3D Models</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured fancy Shopping Products</h2>
+                <p>Discover our top-rated products with immersive 3D viewing experience</p>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <button class="btn btn-outline" id="loadMoreBtn">Load More 3D Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Middle Ad Banner -->
+    <div class="container">
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <p>Advertisement • Explore in Shop</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>True 3D Viewing</h3>
+                    <p>Rotate, zoom, and inspect products from every angle in real-time 3D</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3>VR Compatible</h3>
+                    <p>Experience products in virtual reality with VR headset support</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>True-to-Life Scale</h3>
+                    <p>View products in actual size with AR technology</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-360-degrees"></i>
+                    </div>
+                    <h3>360° Rotation</h3>
+                    <p>Full rotational view with smooth 3D animations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <div class="container">
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Get Morden Shopping Updates</h2>
+                <p>Subscribe to receive exclusive 3D product launches and immersive shopping tips</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email for 3D updates">
+                    <button type="submit">Subscribe in RBShop</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <p>Advertisement • Discover  Shopping</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <p>Revolutionizing online shopping with immersive 3D technology. Experience products like never before.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>3D Experience</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">How 3D Works</a></li>
+                        <li><a href="#">VR Shopping</a></li>
+                        <li><a href="#">AR Preview</a></li>
+                        <li><a href="#">3D Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 3D Street, Virtual City</li>
+                        <li><i class="fas fa-phone"></i><a href="https://wa.me/918158084950?text=Hello Sir,
+                        Please Contact">Connect</a></li>
+                        <li><i class="fas fa-envelope"></i>basakabhijit121@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 3DShop - Immersive 3D Shopping Experience. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> 3D Cart</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-btn">Checkout in 3D</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Item added to 3D cart!</div>
+
+    <script>
+        // Sample product data with 20+ items
+        const products = [
+            // Electronics (5 items)
+            {
+                id: 1,
+                name: "3D Camera",
+                category: "Electronics",
+                price: 1299.99,
+                oldPrice: 1499.99,
+                rating: 4.8,
+                reviews: 345,
+                image: "/abhi3.jpg",
+                badge: "New",
+                inStock: true
+            },
+            {
+                id: 2,
+                name: " Wireless Headphones",
+                category: "Electronics",
+                price: 299.99,
+                oldPrice: 399.99,
+                rating: 4.7,
+                reviews: 567,
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 3,
+                name: "3D Smart Watch Series 7",
+                category: "Electronics",
+                price: 449.99,
+                oldPrice: 549.99,
+                rating: 4.9,
+                reviews: 234,
+                image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
+                badge: "new",
+                inStock: true
+            },
+            {
+                id: 4,
+                name: "Gaming Laptop",
+                category: "Electronics",
+                price: 1999.99,
+                oldPrice: 2499.99,
+                rating: 4.8,
+                reviews: 178,
+                image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80",
+                badge: "New",
+                inStock: true
+            },
+            {
+                id: 5,
+                name: "3D VR Headset",
+                category: "Electronics",
+                price: 599.99,
+                oldPrice: null,
+                rating: 4.9,
+                reviews: 456,
+                image: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                badge: "new",
+                inStock: true
+            },
+
+            // Fashion (5 items)
+            {
+                id: 6,
+                name: "3D Printed Sneakers",
+                category: "Fashion",
+                price: 189.99,
+                oldPrice: 249.99,
+                rating: 4.6,
+                reviews: 234,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2012&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 7,
+                name: "Knit Sweater",
+                category: "Fashion",
+                price: 129.99,
+                oldPrice: 179.99,
+                rating: 4.5,
+                reviews: 189,
+                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1972&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 8,
+                name: " Design Jacket",
+                category: "Fashion",
+                price: 299.99,
+                oldPrice: 399.99,
+                rating: 4.7,
+                reviews: 145,
+                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
+                badge: "new",
+                inStock: true
+            },
+            {
+                id: 9,
+                name: "3D Printed Watch",
+                category: "Fashion",
+                price: 249.99,
+                oldPrice: 329.99,
+                rating: 4.8,
+                reviews: 167,
+                image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 10,
+                name: "Sunglasses",
+                category: "Fashion",
+                price: 89.99,
+                oldPrice: 129.99,
+                rating: 4.4,
+                reviews: 234,
+                image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80",
+                badge: "sale",
+                inStock: true
+            },
+
+            // Home Decor (5 items)
+            {
+                id: 11,
+                name: "3D Printed Lamp",
+                category: "Home Decor",
+                price: 159.99,
+                oldPrice: 199.99,
+                rating: 4.7,
+                reviews: 123,
+                image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 12,
+                name: "3D Wall Art",
+                category: "Home Decor",
+                price: 89.99,
+                oldPrice: 129.99,
+                rating: 4.6,
+                reviews: 89,
+                image: "/abhi.jpg",
+                badge: "new",
+                inStock: true
+            },
+            {
+                id: 13,
+                name: " Geometric Vase",
+                category: "Home Decor",
+                price: 69.99,
+                oldPrice: 99.99,
+                rating: 4.5,
+                reviews: 67,
+                image: "/rbshop.png",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 14,
+                name: "3D Sculpture",
+                category: "Home Decor",
+                price: 299.99,
+                oldPrice: 399.99,
+                rating: 4.9,
+                reviews: 45,
+                image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2008&q=80",
+                badge: "new",
+                inStock: true
+            },
+            {
+                id: 15,
+                name: "3D Clock",
+                category: "Home Decor",
+                price: 79.99,
+                oldPrice: 109.99,
+                rating: 4.4,
+                reviews: 156,
+                image: "/abhi2.jpg",
+                badge: "sale",
+                inStock: true
+            },
+
+            // Accessories (5 items)
+            {
+                id: 16,
+                name: "3D Printed Necklace",
+                category: "Accessories",
+                price: 49.99,
+                oldPrice: 79.99,
+                rating: 4.5,
+                reviews: 234,
+                image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 17,
+                name: "Earrings Set",
+                category: "Accessories",
+                price: 39.99,
+                oldPrice: 59.99,
+                rating: 4.6,
+                reviews: 178,
+                image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
+                badge: "new",
+                inStock: true
+            },
+            {
+                id: 18,
+                name: " Bracelet",
+                category: "Accessories",
+                price: 29.99,
+                oldPrice: 49.99,
+                rating: 4.4,
+                reviews: 145,
+                image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 19,
+                name: "Keychain",
+                category: "Accessories",
+                price: 19.99,
+                oldPrice: 29.99,
+                rating: 4.3,
+                reviews: 267,
+                image: "https://images.unsplash.com/photo-1606318801954-d46d46d3360a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 20,
+                name: "3D Ring",
+                category: "Accessories",
+                price: 59.99,
+                oldPrice: 89.99,
+                rating: 4.7,
+                reviews: 98,
+                image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                badge: "new",
+                inStock: true
+            },
+
+            // Footwear (5 items)
+            {
+                id: 21,
+                name: " Running Shoes",
+                category: "Footwear",
+                price: 159.99,
+                oldPrice: 199.99,
+                rating: 4.8,
+                reviews: 345,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 22,
+                name: "Boots",
+                category: "Footwear",
+                price: 249.99,
+                oldPrice: 299.99,
+                rating: 4.7,
+                reviews: 234,
+                image: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                badge: "new",
+                inStock: true
+            },
+            {
+                id: 23,
+                name: "Sandals",
+                category: "Footwear",
+                price: 79.99,
+                oldPrice: 109.99,
+                rating: 4.5,
+                reviews: 167,
+                image: "https://images.unsplash.com/photo-1603487742131-4160ec999306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                badge: "sale",
+                inStock: true
+            },
+            {
+                id: 24,
+                name: "Formal Shoes",
+                category: "Footwear",
+                price: 189.99,
+                oldPrice: 239.99,
+                rating: 4.6,
+                reviews: 189,
+                image: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                badge: "sale",
+                inStock: true
+            }
+        ];
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let displayedProducts = 8;
+
+        // DOM Elements
+        const productGrid = document.getElementById('productGrid');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCart = document.getElementById('closeCart');
+        const overlay = document.getElementById('overlay');
+        const cartCount = document.getElementById('cartCount');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const toast = document.getElementById('toast');
+        const loader = document.getElementById('loader');
+
+        // Hide loader after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1500);
+        });
+
+        // Load products
+        function loadProducts() {
+            const productsToShow = products.slice(0, displayedProducts);
+
+            productGrid.innerHTML = productsToShow.map(product => `
+                <div class="product-card">
+                    ${product.badge ? `<div class="product-badge ${product.badge}">${product.badge === 'sale' ? 'SALE' : 'NEW'}</div>` : ''}
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="product-3d-overlay">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                ${generateStars(product.rating)}
+                            </div>
+                            <span class="rating-count">(${product.reviews})</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$${product.price.toFixed(2)}</span>
+                            ${product.oldPrice ? `<span class="old-price">$${product.oldPrice.toFixed(2)}</span>` : ''}
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cube"></i> Add to 3D Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Hide load more button if all products are shown
+            if (displayedProducts >= products.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'inline-block';
+            }
+        }
+
+        // Generate star rating
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - 0.5 <= rating) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        // Load more products
+        loadMoreBtn.addEventListener('click', () => {
+            displayedProducts += 4;
+            loadProducts();
+        });
+
+        // Add to cart
+        window.addToCart = (productId) => {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+            showToast('✨ Item added to 3D cart!');
+        };
+
+        // Update cart
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = count;
+
+            renderCartItems();
+        }
+
+        // Render cart items
+        function renderCartItems() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.7);">Your 3D cart is empty</p>';
+                cartTotal.textContent = '$0.00';
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                            <button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Update quantity
+        window.updateQuantity = (productId, newQuantity) => {
+            if (newQuantity < 1) {
+                removeFromCart(productId);
+                return;
+            }
+
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCart();
+            }
+        };
+
+        // Remove from cart
+        window.removeFromCart = (productId) => {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            showToast('🗑️ Item removed from 3D cart');
+        };
+
+        // Show toast
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Cart sidebar
+        cartIcon.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Initialize
+        loadProducts();
+        updateCart();
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const searchBtn = document.querySelector('.search-bar button');
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            if (searchTerm.trim() === '') {
+                displayedProducts = 8;
+                loadProducts();
+                return;
+            }
+
+            const filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(searchTerm) || 
+                p.category.toLowerCase().includes(searchTerm)
+            );
+
+            productGrid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    ${product.badge ? `<div class="product-badge ${product.badge}">${product.badge === 'sale' ? 'SALE' : 'NEW'}</div>` : ''}
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="product-3d-overlay">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                ${generateStars(product.rating)}
+                            </div>
+                            <span class="rating-count">(${product.reviews})</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$${product.price.toFixed(2)}</span>
+                            ${product.oldPrice ? `<span class="old-price">$${product.oldPrice.toFixed(2)}</span>` : ''}
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cube"></i> Add to 3D Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            if (filteredProducts.length === 0) {
+                productGrid.innerHTML = '<p style="text-align: center; color: white; grid-column: 1/-1;">No 3D products found matching your search.</p>';
+            }
+        }
+
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Category click
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.querySelector('h3').textContent;
+                searchInput.value = category;
+                performSearch();
+            });
+        });
+
+        // 3D overlay click
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.product-3d-overlay')) {
+                const productCard = e.target.closest('.product-card');
+                const productName = productCard.querySelector('.product-name').textContent;
+                showToast(`🎮 Loading 3D view of ${productName}`);
+            }
+        });
+    </script>
+</body>
+</html>
